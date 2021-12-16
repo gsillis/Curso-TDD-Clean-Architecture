@@ -14,6 +14,7 @@
 		DE49BF4A2768D2ED00C71A55 /* RemoteAddAccountTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE49BF492768D2ED00C71A55 /* RemoteAddAccountTests.swift */; };
 		DE49BF532768D30B00C71A55 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE49BF2B2768CEDC00C71A55 /* Domain.framework */; };
 		DE49BF542768D30B00C71A55 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE49BF2B2768CEDC00C71A55 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DE569E36276B8D8C005F08E1 /* Model+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE569E35276B8D8B005F08E1 /* Model+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		DE49BF3D2768D2EC00C71A55 /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE49BF442768D2ED00C71A55 /* DataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE49BF492768D2ED00C71A55 /* RemoteAddAccountTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAddAccountTests.swift; sourceTree = "<group>"; };
+		DE569E35276B8D8B005F08E1 /* Model+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Model+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +113,7 @@
 				DE49BF322768D13A00C71A55 /* AddAccount.swift */,
 				DE49BF342768D1F500C71A55 /* AccountModel.swift */,
 				DE49BF362768D21100C71A55 /* AddAccountModel.swift */,
+				DE569E35276B8D8B005F08E1 /* Model+Extensions.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE49BF332768D13A00C71A55 /* AddAccount.swift in Sources */,
+				DE569E36276B8D8C005F08E1 /* Model+Extensions.swift in Sources */,
 				DE49BF352768D1F500C71A55 /* AccountModel.swift in Sources */,
 				DE49BF372768D21100C71A55 /* AddAccountModel.swift in Sources */,
 			);
