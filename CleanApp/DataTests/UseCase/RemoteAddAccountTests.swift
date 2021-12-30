@@ -29,60 +29,25 @@ class RemoteAddAccountTests: XCTestCase {
 
     func test_add_should_complete_with_error_if_client_completes_with_error() {
         let (sut, httpPostClientSpy) = makeSut()
-        let addAccountModel = makeAddAccountModel()
-        let expectation = expectation(description: "waiting")
-
-        sut.add(addAccountModel: addAccountModel) { result in
-
-            switch result {
-            case .failure(let error):
-                XCTAssertEqual(error, .unexpectedError)
-            case .success:
-                XCTFail("Expected error received \(result) instead")
-            }
-            expectation.fulfill()
-        }
-        httpPostClientSpy.completeWith(error: .noConnectivityError)
-        wait(for: [expectation], timeout: 1)
+        expect(sut, completeWith: .failure(.unexpectedError), when: {
+            httpPostClientSpy.completeWith(error: .noConnectivityError)
+        })
     }
+
 
     func test_add_should_complete_with_account_if_client_completes_with_data() {
         let (sut, httpPostClientSpy) = makeSut()
-        let addAccountModel = makeAddAccountModel()
-        let expectation = expectation(description: "waiting")
-        let expectedAccount = makeAccountModel()
-
-        sut.add(addAccountModel: addAccountModel) { result in
-
-            switch result {
-                case .failure:
-                    XCTFail("Expected success received \(result) instead")
-                case .success(let receivedAccount):
-                    XCTAssertEqual(receivedAccount, expectedAccount)
-            }
-            expectation.fulfill()
-        }
-        httpPostClientSpy.completeWith(data: expectedAccount.toData()!)
-        wait(for: [expectation], timeout: 1)
-    }
+        let account = makeAccountModel()
+        expect(sut, completeWith: .success(account), when:  {
+            httpPostClientSpy.completeWith(data: account.toData()!)
+        })
+}
 
     func test_add_should_complete_with_error_if_client_completes_with_invalid_data() {
         let (sut, httpPostClientSpy) = makeSut()
-        let addAccountModel = makeAddAccountModel()
-        let expectation = expectation(description: "waiting")
-
-        sut.add(addAccountModel: addAccountModel) { result in
-
-            switch result {
-                case .failure(let error):
-                    XCTAssertEqual(error, .unexpectedError)
-                case .success:
-                    XCTFail("Expected error received \(result) instead")
-            }
-            expectation.fulfill()
-        }
-        httpPostClientSpy.completeWith(data: Data("invalid_data".utf8))
-        wait(for: [expectation], timeout: 1)
+        expect(sut, completeWith: .failure(.unexpectedError), when: {
+            httpPostClientSpy.completeWith(data: Data("invalid_data".utf8))
+        })
     }
 }
 
@@ -93,6 +58,25 @@ extension RemoteAddAccountTests {
         let httpPostClientSpy = HttpClientSpy()
         let sut = RemoteAddAccount(url: url, httpPostClient: httpPostClientSpy)
         return (sut, httpPostClientSpy)
+    }
+
+    func expect(_ sut: RemoteAddAccount, completeWith expectedResult: Result<AccountModel, DomainError>, when action: () -> Void) {
+        let expectation = expectation(description: "waiting")
+
+        sut.add(addAccountModel: makeAddAccountModel()) { receivedResult in
+
+            switch (expectedResult, receivedResult) {
+            case (.failure(let expectedError), .failure(let receivedError)):
+                XCTAssertEqual(expectedError, receivedError)
+            case (.success(let expectedAccount), .success(let receivedAccount)):
+                XCTAssertEqual(expectedAccount, receivedAccount)
+            default:
+                XCTFail("Expected \(expectedResult) received \(receivedResult) instead")
+            }
+            expectation.fulfill()
+        }
+        action()
+        wait(for: [expectation], timeout: 1)
     }
 
     func makeAddAccountModel() -> AddAccountModel {
