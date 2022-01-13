@@ -49,18 +49,37 @@ class RemoteAddAccountTests: XCTestCase {
             httpPostClientSpy.completeWith(data: makeInvalidData())
         })
     }
+
+    func test_add_should_not_complet_if_sut_has_been_deallocated() {
+        let httpPostClientSpy = HttpClientSpy()
+        var sut: RemoteAddAccount? = RemoteAddAccount(url: makeURL(), httpPostClient: httpPostClientSpy)
+        var result: Result<AccountModel, DomainError>?
+        sut?.add(addAccountModel: makeAddAccountModel()) { result = $0 }
+        sut = nil
+        httpPostClientSpy.completeWith(error: .noConnectivityError)
+        XCTAssertNil(result)
+    }
 }
 
 // MARK: Helpers
 extension RemoteAddAccountTests {
 
-    func makeSut(url: URL = URL(string: "http://any-url.com")!) -> (sut: RemoteAddAccount, httpClientSpy: HttpClientSpy) {
+    func makeSut(
+        url: URL = URL(string: "http://any-url.com")!,
+        file: StaticString = #filePath,
+        line: UInt = #line) -> (sut: RemoteAddAccount, httpClientSpy: HttpClientSpy) {
         let httpPostClientSpy = HttpClientSpy()
         let sut = RemoteAddAccount(url: url, httpPostClient: httpPostClientSpy)
+        checkMemoryLeak(for: sut)
+        checkMemoryLeak(for: httpPostClientSpy)
         return (sut, httpPostClientSpy)
     }
 
-    func expect(_ sut: RemoteAddAccount, completeWith expectedResult: Result<AccountModel, DomainError>, when action: () -> Void, file: StaticString = #filePath, line: UInt = #line) {
+    func expect(_ sut: RemoteAddAccount,
+                completeWith expectedResult: Result<AccountModel, DomainError>,
+                when action: () -> Void,
+                file: StaticString = #filePath,
+                line: UInt = #line) {
         let expectation = expectation(description: "waiting")
 
         sut.add(addAccountModel: makeAddAccountModel()) { receivedResult in
@@ -80,38 +99,11 @@ extension RemoteAddAccountTests {
     }
 
     func makeAddAccountModel() -> AddAccountModel {
-        return AddAccountModel(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_password")
-    }
-
-    func makeURL() -> URL {
-        return URL(string: "http://any-url.com")!
-    }
-
-    func makeInvalidData() -> Data {
-        return Data("invalid_data".utf8)
-    }
-
-    func makeAccountModel() -> AccountModel {
-        return AccountModel(name: "any_name", email: "any_email", password: "any_password", id: "any_id")
-    }
-
-    class HttpClientSpy: HttpPostClient {
-        fileprivate var urls = [URL]()
-        fileprivate var data: Data?
-        fileprivate var completion: ((Result<Data, HttpError>) -> Void)?
-
-        func post(to url: URL, with data: Data?, completion: @escaping (Result<Data, HttpError>) -> Void) {
-            urls.append(url)
-            self.data = data
-            self.completion = completion
-        }
-
-        fileprivate func completeWith(error: HttpError) {
-            completion?(.failure(error))
-        }
-
-        fileprivate func completeWith(data: Data) {
-            completion?(.success(data))
-        }
+        return AddAccountModel(
+            name: "any_name",
+            email: "any_email",
+            password: "any_password",
+            passwordConfirmation: "any_password"
+        )
     }
 }
