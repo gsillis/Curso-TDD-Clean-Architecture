@@ -9,15 +9,18 @@ import XCTest
 import Data
 import Alamofire
 
+typealias AFResult = Result<Data, HttpError>
+typealias StubTuple = (data: Data?, response: HTTPURLResponse?, error: Error?)
+
 class AlamofireAdapter {
-	typealias AFResult = ((Result<Data, HttpError>) -> Void)
+	
 	
     let session: Session
     init(session: Session = .default) {
         self.session = session
     }
     
-	func post(to url: URL, with data: Data?, completion: @escaping (AFResult)) {
+	func post(to url: URL, with data: Data?, completion: @escaping (AFResult) -> Void) {
 		let json = data?.toJson()
 		
 		session.request(url, method: .post, parameters: json, encoding: JSONEncoding.default).responseData { dataResponse in
@@ -48,25 +51,12 @@ class AlamofireAdapterTest: XCTestCase {
 	}
 	
 	func test_post_should_complete_with_error_when_request_completes_with_error()  {
-		let sut = makeSut()
-		URLProtocolStub.simulate(data: nil, response: nil, error: makeError())
-		
-		let exp = expectation(description: "waiting")
-		sut.post(to: makeURL(), with: makeValidData()) { result in
-			switch result {
-			case .failure(let error):
-				XCTAssertEqual(error, .noConnectivityError)
-			case .success:
-				break
-			}
-			exp.fulfill()
-		}
-		
-		wait(for: [exp], timeout: 1)
+		expectResult(.failure(.noConnectivityError), when: (nil, nil, makeError()))
 	}
 }
 
 extension AlamofireAdapterTest {
+	
 	func makeSut(file: StaticString = #filePath, line: UInt = #line) -> AlamofireAdapter {
 		let configuration = URLSessionConfiguration.default
 		configuration.protocolClasses = [URLProtocolStub.self]
@@ -78,13 +68,32 @@ extension AlamofireAdapterTest {
 	
 	func testRequestFor(url: URL, data: Data?, completion: @escaping (URLRequest) -> Void) {
 		let sut = makeSut()
-		sut.post(to: url, with: data) {_ in }
 		let expectation = expectation(description: "waiting")
-		URLProtocolStub.observerRequest { request in
-			completion(request)
-			expectation.fulfill()
-		}
+		sut.post(to: url, with: data) {_ in expectation.fulfill() }
+		var request: URLRequest?
+		URLProtocolStub.observerRequest { request = $0 }
 		wait(for: [expectation], timeout: 1)
+		completion(request!)
+	}
+	
+	func expectResult(_ expectedResult: AFResult, when stub: StubTuple, file: StaticString = #filePath, line: UInt = #line) {
+		let sut = makeSut()
+		URLProtocolStub.simulate(data: stub.data, response: stub.response, error: stub.error)
+		
+		let exp = expectation(description: "waiting")
+		sut.post(to: makeURL(), with: makeValidData()) { receivedResult in
+			
+			switch (expectedResult, receivedResult) {
+			case (.failure(let expectedError), .failure(let receivedError)):
+				XCTAssertEqual(expectedError, receivedError, file: file, line: line)
+			case (.success(let expectedSuccess), .success(let receivedSuccess)):
+				XCTAssertEqual(expectedSuccess, receivedSuccess, file: file, line: line)
+			default:
+				XCTFail("Expected \(expectedResult) got \(receivedResult) instead", file: file, line: line)
+			}
+			exp.fulfill()
+		}
+		wait(for: [exp], timeout: 1)
 	}
 }
 
