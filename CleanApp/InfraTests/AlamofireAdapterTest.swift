@@ -9,29 +9,48 @@ import XCTest
 import Data
 import Alamofire
 
-typealias AFResult = Result<Data, HttpError>
+typealias AFResult = Result<Data?, HttpError>
 typealias StubTuple = (data: Data?, response: HTTPURLResponse?, error: Error?)
 
-class AlamofireAdapter {
+class AlamofireAdapter: HttpPostClient {
+	let session: Session
+	init(session: Session = .default) {
+		self.session = session
+	}
 	
-	
-    let session: Session
-    init(session: Session = .default) {
-        self.session = session
-    }
-    
 	func post(to url: URL, with data: Data?, completion: @escaping (AFResult) -> Void) {
 		let json = data?.toJson()
 		
 		session.request(url, method: .post, parameters: json, encoding: JSONEncoding.default).responseData { dataResponse in
+			
+			guard let statusCode = dataResponse.response?.statusCode else { return
+				completion(.failure(.noConnectivity))
+			}
+			
 			switch dataResponse.result {
 			case .failure:
-				completion(.failure(.noConnectivityError))
-			case .success:
-				break
+				completion(.failure(.noConnectivity))
+			case .success(let data):
+				
+				switch statusCode {
+				case 204:
+					completion(.success(nil))
+				case 200...299:
+					completion(.success(data))
+				case 401:
+					completion(.failure(.unauthorized))
+				case 403:
+					completion(.failure(.forbidden))
+				case 400...499:
+					completion(.failure(.badRequest))
+				case 500...599:
+					completion(.failure(.serverError))
+				default:
+					completion(.failure(.noConnectivity))
+				}
 			}
 		}
-    }
+	}
 }
 
 class AlamofireAdapterTest: XCTestCase {
@@ -51,7 +70,33 @@ class AlamofireAdapterTest: XCTestCase {
 	}
 	
 	func test_post_should_complete_with_error_when_request_completes_with_error()  {
-		expectResult(.failure(.noConnectivityError), when: (nil, nil, makeError()))
+		expectResult(.failure(.noConnectivity), when: (nil, nil, makeError()))
+	}
+	
+	func test_post_should_complete_with_error_on_all_invalid_cases()  {
+		expectResult(.failure(.noConnectivity), when: (makeValidData(), makeResponse(), makeError()))
+		expectResult(.failure(.noConnectivity), when: (makeValidData(), nil, makeError()))
+		expectResult(.failure(.noConnectivity), when: (makeValidData(), nil, nil))
+		expectResult(.failure(.noConnectivity), when: (nil, makeResponse(), makeError()))
+		expectResult(.failure(.noConnectivity), when: (nil, makeResponse(), nil))
+		expectResult(.failure(.noConnectivity), when: (nil, nil, nil))
+	}
+	
+	func test_post_should_complete_with_data_when_request_completes_with_200()  {
+		expectResult(.success(makeValidData()), when: (makeValidData(), makeResponse(), nil))
+	}
+	
+	func test_post_should_complete_with_no_data_when_request_completes_with_204()  {
+		expectResult(.success(nil), when: (nil, makeResponse(statusCode: 204), nil))
+		expectResult(.success(nil), when: (makeEmptyData(), makeResponse(statusCode: 204), nil))
+		expectResult(.success(nil), when: (makeValidData(), makeResponse(statusCode: 204), nil))
+	}
+	
+	func test_post_should_complete_with_error_when_request_completes_with_non_200()  {
+		expectResult(.failure(.badRequest), when: (makeValidData(), makeResponse(statusCode: 400), nil))
+		expectResult(.failure(.serverError), when: (makeValidData(), makeResponse(statusCode: 500), nil))
+		expectResult(.failure(.unauthorized), when: (makeValidData(), makeResponse(statusCode: 401), nil))
+		expectResult(.failure(.forbidden), when: (makeValidData(), makeResponse(statusCode: 403), nil))
 	}
 }
 
