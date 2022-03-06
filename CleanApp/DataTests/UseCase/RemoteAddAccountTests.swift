@@ -34,7 +34,6 @@ class RemoteAddAccountTests: XCTestCase {
         })
     }
 
-
     func test_add_should_complete_with_account_if_client_completes_with_data() {
         let (sut, httpPostClientSpy) = makeSut()
         let account = makeAccountModel()
