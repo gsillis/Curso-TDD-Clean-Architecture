@@ -20,8 +20,8 @@ public final class RemoteAddAccount: AddAccount {
     public func add(addAccountModel: AddAccountModel, completion: @escaping (Result<AccountModel, DomainError>) -> Void) {
         httpPostClient.post(to: url, with: addAccountModel.toData()) { [weak self] result in
             guard self != nil else { return }
-            /// A var test serve para testar memory leak 
-            var test = self?.url
+            /// Essa var serve para testar memory leak
+            var _ = self?.url
             switch result {
             case .success(let data):
                     if let model: AccountModel = data?.toModel()  {
