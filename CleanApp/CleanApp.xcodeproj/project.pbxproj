@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C54849B927F1D5E7006DADBB /* Tests+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E2DD0278F4FB600D6C454 /* Tests+Extensions.swift */; };
+		C54849BA27F1D5E8006DADBB /* Tests+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E2DD0278F4FB600D6C454 /* Tests+Extensions.swift */; };
+		C54849BC27F1D7C8006DADBB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54849BB27F1D7C8006DADBB /* LoadingView.swift */; };
 		C549A14327C13F8E00D62179 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C549A14227C13F8E00D62179 /* AlamofireAdapter.swift */; };
 		C549A14727C141B700D62179 /* URLProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = C549A14627C141B700D62179 /* URLProtocolStub.swift */; };
 		C54B647427B46ADE00CAB250 /* Infra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C54B646C27B46ADE00CAB250 /* Infra.framework */; };
@@ -25,6 +28,8 @@
 		C5908DD627D7768400DA2BED /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE49BF2B2768CEDC00C71A55 /* Domain.framework */; };
 		C5908DD727D7768400DA2BED /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DE49BF2B2768CEDC00C71A55 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C5908DDC27D7871B00DA2BED /* EmailValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5908DDB27D7871B00DA2BED /* EmailValidator.swift */; };
+		C5D6A6A227EA99600081C9AF /* AccountModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECFB1D52790D6B500A6BB24 /* AccountModelFactory.swift */; };
+		C5D6A6A327EA99F70081C9AF /* AccountModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECFB1D52790D6B500A6BB24 /* AccountModelFactory.swift */; };
 		DE1E2DD1278F4FB600D6C454 /* Tests+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E2DD0278F4FB600D6C454 /* Tests+Extensions.swift */; };
 		DE3A444E277E2BB3003932CE /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3A444D277E2BB3003932CE /* DomainError.swift */; };
 		DE3A4451277E2F19003932CE /* HttpError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3A4450277E2F19003932CE /* HttpError.swift */; };
@@ -147,6 +152,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C54849BB27F1D7C8006DADBB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		C549A14227C13F8E00D62179 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		C549A14627C141B700D62179 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
 		C54B646C27B46ADE00CAB250 /* Infra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Infra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -310,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				C5908DD227D774AF00DA2BED /* AlertView.swift */,
+				C54849BB27F1D7C8006DADBB /* LoadingView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -801,6 +808,8 @@
 			files = (
 				C5908DD127D7740F00DA2BED /* SignUpPresenter.swift in Sources */,
 				C5908DD427D774E400DA2BED /* AlertView.swift in Sources */,
+				C5D6A6A227EA99600081C9AF /* AccountModelFactory.swift in Sources */,
+				C54849BC27F1D7C8006DADBB /* LoadingView.swift in Sources */,
 				C5908DDC27D7871B00DA2BED /* EmailValidator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -809,7 +818,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5D6A6A327EA99F70081C9AF /* AccountModelFactory.swift in Sources */,
 				C54F55E527D54832007BC90C /* SignUpPresenterTests.swift in Sources */,
+				C54849B927F1D5E7006DADBB /* Tests+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -818,6 +829,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C584352C27C43EC4008585B4 /* AddAccountIntegrationTests.swift in Sources */,
+				C54849BA27F1D5E8006DADBB /* Tests+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

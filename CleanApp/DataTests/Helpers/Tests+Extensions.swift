@@ -9,7 +9,7 @@ import Foundation
 import XCTest
 
 extension XCTestCase {
-    func checkMemoryLeak(
+    public func checkMemoryLeak(
         for instance: AnyObject,
         file: StaticString = #filePath,
         line: UInt = #line) {
