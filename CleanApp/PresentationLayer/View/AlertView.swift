@@ -12,8 +12,8 @@ public protocol AlertView {
 }
 
 public struct AlertViewModel: Equatable {
-    public  var title: String?
-    public  var message: String?
+    public var title: String?
+    public var message: String?
     
     public init(title: String?, message: String?) {
         self.title = title
