@@ -37,7 +37,8 @@ public final class SignUpPresenter {
                 switch result {
                 case.failure:
                     self.alertView.showMessage(viewModel: AlertViewModel(title: "Erro", message: "Algo inesperado aconteceu, tente novamente mais tarde"))
-                default: break
+                case .success:
+                    self.alertView.showMessage(viewModel: AlertViewModel(title: "Tudo certo", message: "Conta criada com sucesso"))
                 }
                 self.loadingView.show(viewModel: LoadingViewModel(isLoading: false))
             }
