@@ -22,19 +22,30 @@ final class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
+        delegate()
     }
     
     private func configure() {
         saveButton.layer.cornerRadius = 5
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+        hideKeyboardOnTap()
+    }
+    
+    private func delegate() {
+        nameTextfield.delegate = self
+        emailTextfield.delegate = self
+        passwordTextfield.delegate = self
+        passwordConfirmationTextfield.delegate = self
     }
 }
 
 extension SignUpViewController: LoadingView {
     func show(viewModel: LoadingViewModel) {
         if viewModel.isLoading ?? false {
+            view.isUserInteractionEnabled = false
             loadingIndicator.startAnimating()
         } else {
+            view.isUserInteractionEnabled = true
             loadingIndicator.stopAnimating()
         }
     }
@@ -57,5 +68,12 @@ private extension SignUpViewController {
             password: passwordTextfield.text,
             passwordConfirmation: passwordConfirmationTextfield.text
         ))
+    }
+}
+
+extension SignUpViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        resignFirstResponder()
+        return true
     }
 }

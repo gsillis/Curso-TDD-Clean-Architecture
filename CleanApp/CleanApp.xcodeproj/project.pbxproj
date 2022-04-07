@@ -35,6 +35,7 @@
 		C5A9A05127FF4D3C003F7006 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A9A05027FF4D3C003F7006 /* SignUpViewController.swift */; };
 		C5A9A05327FF4D55003F7006 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C5A9A05227FF4D55003F7006 /* SignUp.storyboard */; };
 		C5A9A05B27FF747B003F7006 /* Test+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A9A05A27FF747B003F7006 /* Test+Extensions.swift */; };
+		C5A9A05D27FF7A63003F7006 /* UIViewController+ Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5A9A05C27FF7A63003F7006 /* UIViewController+ Extensions.swift */; };
 		C5AB7A5327F47B6F009EF521 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AB7A5227F47B6F009EF521 /* SignUpViewModel.swift */; };
 		C5AB7A5627F47C31009EF521 /* SignUpMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AB7A5527F47C31009EF521 /* SignUpMapper.swift */; };
 		C5AB7A5A27F47D67009EF521 /* AlertViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AB7A5927F47D67009EF521 /* AlertViewSpy.swift */; };
@@ -211,6 +212,7 @@
 		C5A9A05027FF4D3C003F7006 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		C5A9A05227FF4D55003F7006 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		C5A9A05A27FF747B003F7006 /* Test+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Test+Extensions.swift"; sourceTree = "<group>"; };
+		C5A9A05C27FF7A63003F7006 /* UIViewController+ Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ Extensions.swift"; sourceTree = "<group>"; };
 		C5AB7A5227F47B6F009EF521 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		C5AB7A5527F47C31009EF521 /* SignUpMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpMapper.swift; sourceTree = "<group>"; };
 		C5AB7A5927F47D67009EF521 /* AlertViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewSpy.swift; sourceTree = "<group>"; };
@@ -431,6 +433,7 @@
 			isa = PBXGroup;
 			children = (
 				C5A9A05527FF73F0003F7006 /* SignUp */,
+				C5A9A05C27FF7A63003F7006 /* UIViewController+ Extensions.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -1050,6 +1053,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C5A9A05127FF4D3C003F7006 /* SignUpViewController.swift in Sources */,
+				C5A9A05D27FF7A63003F7006 /* UIViewController+ Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
