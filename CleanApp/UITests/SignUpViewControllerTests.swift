@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import UI
+import PresentationLayer
 
 class SignUpViewControllerTests: XCTestCase {
 
