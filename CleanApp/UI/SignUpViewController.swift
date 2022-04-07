@@ -11,10 +11,19 @@ import PresentationLayer
 final class SignUpViewController: UIViewController {
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var saveButton: UIButton!
+    
+    var signUp: ((SignUpViewModel) -> Void)? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configure()
     }
+    
+    private func configure() {
+        saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+    }
+    
 }
 
 extension SignUpViewController: LoadingView {
@@ -30,5 +39,12 @@ extension SignUpViewController: LoadingView {
 extension SignUpViewController: AlertView {
     func showMessage(viewModel: AlertViewModel) {
         
+    }
+}
+
+@objc
+private extension SignUpViewController {
+    func saveButtonTapped() {
+        signUp?(SignUpViewModel(name: nil, email: nil, password: nil, passwordConfirmation: nil))
     }
 }
