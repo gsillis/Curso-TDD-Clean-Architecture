@@ -12,6 +12,10 @@ final class SignUpViewController: UIViewController {
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var nameTextfield: UITextField!
+    @IBOutlet weak var emailTextfield: UITextField!
+    @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var passwordConfirmationTextfield: UITextField!
     
     var signUp: ((SignUpViewModel) -> Void)? = nil
     
@@ -45,6 +49,11 @@ extension SignUpViewController: AlertView {
 @objc
 private extension SignUpViewController {
     func saveButtonTapped() {
-        signUp?(SignUpViewModel(name: nil, email: nil, password: nil, passwordConfirmation: nil))
+        signUp?(SignUpViewModel(
+            name: nameTextfield.text,
+            email: emailTextfield.text,
+            password: passwordTextfield.text,
+            passwordConfirmation: passwordConfirmationTextfield.text
+        ))
     }
 }
