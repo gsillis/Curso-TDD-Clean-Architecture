@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C51419A228022090002318B8 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = C51419A128022090002318B8 /* Storyboarded.swift */; };
 		C52A2BAB27FF3A4C00FE9E6A /* UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52A2BA327FF3A4B00FE9E6A /* UI.framework */; };
 		C52A2BB027FF3A4C00FE9E6A /* SignUpViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52A2BAF27FF3A4C00FE9E6A /* SignUpViewControllerTests.swift */; };
 		C52A2BB827FF3BE800FE9E6A /* PresentationLayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C54F55D827D54832007BC90C /* PresentationLayer.framework */; };
@@ -192,6 +193,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		C51419A128022090002318B8 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		C52A2BA327FF3A4B00FE9E6A /* UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C52A2BAA27FF3A4C00FE9E6A /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C52A2BAF27FF3A4C00FE9E6A /* SignUpViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewControllerTests.swift; sourceTree = "<group>"; };
@@ -323,6 +325,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C51419A02802207D002318B8 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C5A9A05C27FF7A63003F7006 /* UIViewController+ Extensions.swift */,
+				C51419A128022090002318B8 /* Storyboarded.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		C52A2BA427FF3A4B00FE9E6A /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -433,7 +444,7 @@
 			isa = PBXGroup;
 			children = (
 				C5A9A05527FF73F0003F7006 /* SignUp */,
-				C5A9A05C27FF7A63003F7006 /* UIViewController+ Extensions.swift */,
+				C51419A02802207D002318B8 /* Helpers */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -1054,6 +1065,7 @@
 			files = (
 				C5A9A05127FF4D3C003F7006 /* SignUpViewController.swift in Sources */,
 				C5A9A05D27FF7A63003F7006 /* UIViewController+ Extensions.swift in Sources */,
+				C51419A228022090002318B8 /* Storyboarded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
