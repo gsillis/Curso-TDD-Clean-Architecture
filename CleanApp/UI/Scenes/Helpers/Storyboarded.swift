@@ -12,7 +12,7 @@ public protocol Storyboarded {
     static func instantiate() -> Self
 }
 
-extension Storyboarded where Self: UIViewController {
+public extension Storyboarded where Self: UIViewController {
     static func instantiate() -> Self {
         let vcName = String(describing: self)
         let sbName = vcName.components(separatedBy: "ViewController")[0]
