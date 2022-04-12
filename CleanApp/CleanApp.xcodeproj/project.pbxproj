@@ -68,6 +68,9 @@
 		C5AB7A6527F47EF6009EF521 /* TestFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AB7A6427F47EF6009EF521 /* TestFactories.swift */; };
 		C5BF2CCD28062BB80040AE40 /* UseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF2CCC28062BB80040AE40 /* UseCaseFactory.swift */; };
 		C5BF2CD028062D960040AE40 /* SignUpComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF2CCF28062D960040AE40 /* SignUpComposer.swift */; };
+		C5BF2CD2280632950040AE40 /* SignUpIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF2CD1280632950040AE40 /* SignUpIntegrationTests.swift */; };
+		C5BF2CD3280632DC0040AE40 /* AddAccountSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AB7A5F27F47DC7009EF521 /* AddAccountSpy.swift */; };
+		C5BF2CD4280633020040AE40 /* Tests+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E2DD0278F4FB600D6C454 /* Tests+Extensions.swift */; };
 		C5D6A6A227EA99600081C9AF /* AccountModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECFB1D52790D6B500A6BB24 /* AccountModelFactory.swift */; };
 		C5D6A6A327EA99F70081C9AF /* AccountModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECFB1D52790D6B500A6BB24 /* AccountModelFactory.swift */; };
 		DE1E2DD1278F4FB600D6C454 /* Tests+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E2DD0278F4FB600D6C454 /* Tests+Extensions.swift */; };
@@ -350,6 +353,7 @@
 		C5AB7A6427F47EF6009EF521 /* TestFactories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestFactories.swift; sourceTree = "<group>"; };
 		C5BF2CCC28062BB80040AE40 /* UseCaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseFactory.swift; sourceTree = "<group>"; };
 		C5BF2CCF28062D960040AE40 /* SignUpComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpComposer.swift; sourceTree = "<group>"; };
+		C5BF2CD1280632950040AE40 /* SignUpIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpIntegrationTests.swift; sourceTree = "<group>"; };
 		DE1E2DD0278F4FB600D6C454 /* Tests+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Tests+Extensions.swift"; sourceTree = "<group>"; };
 		DE3A444D277E2BB3003932CE /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
 		DE3A4450277E2F19003932CE /* HttpError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpError.swift; sourceTree = "<group>"; };
@@ -603,6 +607,7 @@
 		C56041082804D144004E7AD2 /* MainTests */ = {
 			isa = PBXGroup;
 			children = (
+				C5BF2CD1280632950040AE40 /* SignUpIntegrationTests.swift */,
 			);
 			path = MainTests;
 			sourceTree = "<group>";
@@ -1263,6 +1268,7 @@
 					};
 					C56041042804D144004E7AD2 = {
 						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
 						TestTargetID = C56040EF2804D142004E7AD2;
 					};
 					C584352827C43EC4008585B4 = {
@@ -1519,6 +1525,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5BF2CD3280632DC0040AE40 /* AddAccountSpy.swift in Sources */,
+				C5BF2CD2280632950040AE40 /* SignUpIntegrationTests.swift in Sources */,
+				C5BF2CD4280633020040AE40 /* Tests+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2161,15 +2170,22 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WKN62NB674;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = pesssoal.MainTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Main.app/Main";
@@ -2181,11 +2197,17 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WKN62NB674;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = pesssoal.MainTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

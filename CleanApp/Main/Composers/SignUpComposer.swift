@@ -9,8 +9,8 @@ import Foundation
 import UI
 import Domain
 
-final class SignUpComposer {
-    static func makeViewController(addAccount: AddAccount) -> SignUpViewController {
+public final class SignUpComposer {
+    public static func makeViewController(addAccount: AddAccount) -> SignUpViewController {
         return ControllersFactory.makeSignUpController(remoteAddAccount: addAccount)
     }
 }
