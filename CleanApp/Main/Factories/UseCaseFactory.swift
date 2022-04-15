@@ -11,9 +11,14 @@ import Domain
 import Data
 
 final class UseCaseFactory {
+    private static let httpClient = AlamofireAdapter()
+    private static let apiBaseUrl = Environment.variable(.apiBaseURL)
+    
+    static func makeURL(path: String) -> URL {
+        return URL(string: "\(apiBaseUrl)/\(path)")!
+    }
+    
     static func makeRemoteAddAccount() -> AddAccount {
-        let alamofire = AlamofireAdapter()
-        let url = URL(string: "http://fordevs.herokuapp.com/api/signup")!
-        return RemoteAddAccount(url: url, httpPostClient: alamofire)
+        return RemoteAddAccount(url: makeURL(path: "signup"), httpPostClient: httpClient)
     }
 }

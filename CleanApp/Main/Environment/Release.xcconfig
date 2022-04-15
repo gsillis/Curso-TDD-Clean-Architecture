@@ -1,0 +1,10 @@
+//
+//  Release.xcconfig
+//  CleanApp
+//
+//  Created by Gabriela Sillis on 15/04/22.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+API_BASE_URL = http:/$()/fordevs.herokuapp.com/api
