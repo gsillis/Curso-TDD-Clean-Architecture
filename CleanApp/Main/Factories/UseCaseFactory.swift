@@ -9,6 +9,7 @@ import Foundation
 import Infra
 import Domain
 import Data
+import UIKit
 
 final class UseCaseFactory {
     private static let httpClient = AlamofireAdapter()
@@ -19,6 +20,7 @@ final class UseCaseFactory {
     }
     
     static func makeRemoteAddAccount() -> AddAccount {
-        return RemoteAddAccount(url: makeURL(path: "signup"), httpPostClient: httpClient)
+        let addAccount = RemoteAddAccount(url: makeURL(path: "signup"), httpPostClient: httpClient)
+        return MainQueueDispatchDecorator(addAccount)
     }
 }
