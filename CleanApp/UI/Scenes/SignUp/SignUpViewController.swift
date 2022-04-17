@@ -8,7 +8,7 @@
 import UIKit
 import PresentationLayer
 
-final class SignUpViewController: UIViewController, Storyboarded {
+public final class SignUpViewController: UIViewController, Storyboarded {
     
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var saveButton: UIButton!
@@ -17,9 +17,9 @@ final class SignUpViewController: UIViewController, Storyboarded {
     @IBOutlet weak var passwordTextfield: UITextField!
     @IBOutlet weak var passwordConfirmationTextfield: UITextField!
     
-    var signUp: ((SignUpViewModel) -> Void)? = nil
+    public var signUp: ((SignUpViewModel) -> Void)? = nil
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         configure()
         delegate()
@@ -40,7 +40,7 @@ final class SignUpViewController: UIViewController, Storyboarded {
 }
 
 extension SignUpViewController: LoadingView {
-    func show(viewModel: LoadingViewModel) {
+    public func show(viewModel: LoadingViewModel) {
         if viewModel.isLoading ?? false {
             view.isUserInteractionEnabled = false
             loadingIndicator.startAnimating()
@@ -52,7 +52,7 @@ extension SignUpViewController: LoadingView {
 }
 
 extension SignUpViewController: AlertView {
-    func showMessage(viewModel: AlertViewModel) {
+    public func showMessage(viewModel: AlertViewModel) {
         let alert = UIAlertController(title: viewModel.title, message: viewModel.message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default))
         present(alert, animated: true)
@@ -72,8 +72,8 @@ private extension SignUpViewController {
 }
 
 extension SignUpViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        resignFirstResponder()
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
         return true
     }
 }
