@@ -8,6 +8,7 @@
 import XCTest
 import Main
 import UI
+import Validation
 
 class SignUpComposerTests: XCTestCase {
     func test_background_request_should_complete_on_main_thread()  {
@@ -20,6 +21,36 @@ class SignUpComposerTests: XCTestCase {
             exp.fulfill()
         }
         wait(for: [exp], timeout: 1)
+    }
+    
+    func test_should_compose_with_correct_validations() {
+        let validations = SignUpComposer.makeValidations()
+        XCTAssertEqual(validations[0] as! RequiredFieldValidation, RequiredFieldValidation(
+            fieldName: "nome",
+            fieldLabel: "Nome"
+        ))
+        XCTAssertEqual(validations[1] as! RequiredFieldValidation, RequiredFieldValidation(
+            fieldName: "email",
+            fieldLabel: "Email"
+        ))
+        XCTAssertEqual(validations[2] as! EmailVadation, EmailVadation(
+            fieldName: "email",
+            fieldLabel: "Email",
+            emailValidator: EmailValidatorSpy()
+        ))
+        XCTAssertEqual(validations[3] as! RequiredFieldValidation, RequiredFieldValidation(
+            fieldName: "password",
+            fieldLabel: "Password"
+        ))
+        XCTAssertEqual(validations[4] as! RequiredFieldValidation, RequiredFieldValidation(
+            fieldName: "passwordConfirmation",
+            fieldLabel: "Password Confirmation"
+        ))
+        XCTAssertEqual(validations[5] as! CompareFieldsValidation, CompareFieldsValidation(
+            fieldName: "password",
+            fieldLabel: "passwordConfirmation",
+            fieldToCompare: "Password Confirmation"
+        ))
     }
 }
 

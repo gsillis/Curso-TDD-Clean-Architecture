@@ -7,8 +7,7 @@
 //
 
 import XCTest
-import PresentationLayer
-import Validation
+import Infra
 
 class EmailValidatorAdapterTests: XCTestCase {
 

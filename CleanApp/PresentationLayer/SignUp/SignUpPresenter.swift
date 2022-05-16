@@ -10,19 +10,23 @@ import Domain
 
 public final class SignUpPresenter {
     private let alertView: AlertView
-    private let emailValidator: EmailValidator
     private let addAccount: AddAccount
     private let loadingView: LoadingView
+    private let validation: Validation
     
-    public init(alertView: AlertView, emailValidator: EmailValidator, addAccount: AddAccount, loadingView: LoadingView) {
+    public init(
+        alertView: AlertView,
+        addAccount: AddAccount,
+        loadingView: LoadingView,
+        validation: Validation) {
         self.alertView = alertView
-        self.emailValidator = emailValidator
         self.addAccount = addAccount
         self.loadingView = loadingView
+        self.validation = validation
     }
     
     public func signUp(viewModel: SignUpViewModel) {
-        if let message = validateFields(viewModel: viewModel) {
+        if let message = validation.validate(data: viewModel.toJson()) {
             alertView.showMessage(viewModel: AlertViewModel(title: "Erro", message: message))
         } else {
             loadingView.show(viewModel: LoadingViewModel(isLoading: true))
@@ -37,23 +41,5 @@ public final class SignUpPresenter {
                 }
             }
         }
-    }
-    
-    private func validateFields(viewModel: SignUpViewModel) -> String? {
-        if viewModel.name == nil || viewModel.name!.isEmpty {
-            return "O campo Nome é obrigatório"
-        } else if viewModel.email == nil || viewModel.email!.isEmpty {
-            return "O campo Email é obrigatório"
-        } else if viewModel.password == nil || viewModel.password!.isEmpty {
-            return "O campo Senha é obrigatório"
-        } else if viewModel.passwordConfirmation == nil || viewModel.passwordConfirmation!.isEmpty {
-            return "O campo Confirmar Senha é obrigatório"
-        } else if viewModel.password != viewModel.passwordConfirmation {
-            return "As senhas não são iguais"
-        } else if !emailValidator.isValid(email: viewModel.email ?? "") {
-            return "O email é inválido"
-        }
-        
-        return nil
     }
 }
