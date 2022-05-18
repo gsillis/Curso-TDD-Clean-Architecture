@@ -27,12 +27,12 @@ public final class SignUpComposer {
     
     public static func makeValidations() -> [Validation] {
         return [
-            RequiredFieldValidation(fieldName: "nome",fieldLabel: "Nome"),
+            RequiredFieldValidation(fieldName: "name",fieldLabel: "Nome"),
             RequiredFieldValidation(fieldName: "email",fieldLabel: "Email"),
             EmailVadation(fieldName: "email", fieldLabel: "Email", emailValidator: EmailValidatorAdapter()),
             RequiredFieldValidation(fieldName: "password",fieldLabel: "Password"),
             RequiredFieldValidation(fieldName: "passwordConfirmation",fieldLabel: "Password Confirmation"),
-            CompareFieldsValidation(fieldName: "password", fieldLabel: "passwordConfirmation", fieldToCompare: "Password Confirmation"),
+            CompareFieldsValidation(fieldName: "password", fieldLabel: "Password Confirmation", fieldToCompare: "passwordConfirmation"),
         ]
     }
 }
