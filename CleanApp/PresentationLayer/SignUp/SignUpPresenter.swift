@@ -30,7 +30,7 @@ public final class SignUpPresenter {
             alertView.showMessage(viewModel: AlertViewModel(title: "Erro", message: message))
         } else {
             loadingView.show(viewModel: LoadingViewModel(isLoading: true))
-            addAccount.add(addAccountModel: SignUpMapper.toAddAccountModel(viewModel: viewModel)) { [weak self] result in
+            addAccount.add(addAccountModel: viewModel.toAddAccountModel(viewModel: viewModel)) { [weak self] result in
                 guard let self = self else { return }
                 self.loadingView.show(viewModel: LoadingViewModel(isLoading: false))
                 switch result {

@@ -26,7 +26,7 @@ class SignUpComposerTests: XCTestCase {
     func test_should_compose_with_correct_validations() {
         let validations = SignUpComposer.makeValidations()
         XCTAssertEqual(validations[0] as! RequiredFieldValidation, RequiredFieldValidation(
-            fieldName: "nome",
+            fieldName: "name",
             fieldLabel: "Nome"
         ))
         XCTAssertEqual(validations[1] as! RequiredFieldValidation, RequiredFieldValidation(
@@ -48,8 +48,8 @@ class SignUpComposerTests: XCTestCase {
         ))
         XCTAssertEqual(validations[5] as! CompareFieldsValidation, CompareFieldsValidation(
             fieldName: "password",
-            fieldLabel: "passwordConfirmation",
-            fieldToCompare: "Password Confirmation"
+            fieldLabel: "Password Confirmation",
+            fieldToCompare: "passwordConfirmation"
         ))
     }
 }
