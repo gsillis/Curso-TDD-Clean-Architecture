@@ -10,8 +10,7 @@ import Domain
 
 func makeAccountModel() -> AccountModel {
     return AccountModel(
-        name: "any_name",
-        accessToken: "any_token"
+        name: "any_string", accessToken: "any_token"
     )
 }
 
