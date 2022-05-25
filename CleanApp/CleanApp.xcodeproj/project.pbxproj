@@ -680,7 +680,6 @@
 				C5DF6E96280C4EC7004BE840 /* Decorators */,
 				C5AC8FEE2809FDBD003E31EC /* Environment */,
 				C5BF2CD728063A4D0040AE40 /* Proxies */,
-				C5BF2CCE28062D7B0040AE40 /* Composers */,
 				C56041392804D307004E7AD2 /* Factories */,
 				C56040F22804D142004E7AD2 /* AppDelegate.swift */,
 				C56040F42804D142004E7AD2 /* SceneDelegate.swift */,
@@ -702,6 +701,7 @@
 		C56041392804D307004E7AD2 /* Factories */ = {
 			isa = PBXGroup;
 			children = (
+				C5BF2CCF28062D960040AE40 /* SignUpComposer.swift */,
 				C5BF2CCC28062BB80040AE40 /* UseCaseFactory.swift */,
 			);
 			path = Factories;
@@ -848,14 +848,6 @@
 				C5AC8FF12809FE12003E31EC /* Release.xcconfig */,
 			);
 			path = Environment;
-			sourceTree = "<group>";
-		};
-		C5BF2CCE28062D7B0040AE40 /* Composers */ = {
-			isa = PBXGroup;
-			children = (
-				C5BF2CCF28062D960040AE40 /* SignUpComposer.swift */,
-			);
-			path = Composers;
 			sourceTree = "<group>";
 		};
 		C5BF2CD728063A4D0040AE40 /* Proxies */ = {
