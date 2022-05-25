@@ -34,6 +34,8 @@
 		C539FF95283EB7BE00EEBE19 /* RoundedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539FF94283EB7BE00EEBE19 /* RoundedTextField.swift */; };
 		C539FF97283EB8F600EEBE19 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539FF96283EB8F600EEBE19 /* NavigationController.swift */; };
 		C539FF99283EC10E00EEBE19 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C539FF98283EC10E00EEBE19 /* SignUp.storyboard */; };
+		C539FF9B283ED35100EEBE19 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539FF9A283ED35100EEBE19 /* Authentication.swift */; };
+		C539FF9D283ED39300EEBE19 /* AuthenticationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539FF9C283ED39300EEBE19 /* AuthenticationModel.swift */; };
 		C54849B927F1D5E7006DADBB /* Tests+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E2DD0278F4FB600D6C454 /* Tests+Extensions.swift */; };
 		C54849BA27F1D5E8006DADBB /* Tests+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E2DD0278F4FB600D6C454 /* Tests+Extensions.swift */; };
 		C54849BC27F1D7C8006DADBB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54849BB27F1D7C8006DADBB /* LoadingView.swift */; };
@@ -364,6 +366,8 @@
 		C539FF94283EB7BE00EEBE19 /* RoundedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedTextField.swift; sourceTree = "<group>"; };
 		C539FF96283EB8F600EEBE19 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		C539FF98283EC10E00EEBE19 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		C539FF9A283ED35100EEBE19 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		C539FF9C283ED39300EEBE19 /* AuthenticationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationModel.swift; sourceTree = "<group>"; };
 		C54849BB27F1D7C8006DADBB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		C549A14227C13F8E00D62179 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		C549A14627C141B700D62179 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
@@ -1008,6 +1012,7 @@
 			isa = PBXGroup;
 			children = (
 				DE49BF322768D13A00C71A55 /* AddAccount.swift */,
+				C539FF9A283ED35100EEBE19 /* Authentication.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1017,6 +1022,7 @@
 			children = (
 				DE49BF342768D1F500C71A55 /* AccountModel.swift */,
 				DE49BF362768D21100C71A55 /* AddAccountModel.swift */,
+				C539FF9C283ED39300EEBE19 /* AuthenticationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1721,7 +1727,9 @@
 				DE3A444E277E2BB3003932CE /* DomainError.swift in Sources */,
 				DE49BF332768D13A00C71A55 /* AddAccount.swift in Sources */,
 				DE569E36276B8D8C005F08E1 /* Model+Extensions.swift in Sources */,
+				C539FF9B283ED35100EEBE19 /* Authentication.swift in Sources */,
 				DE49BF352768D1F500C71A55 /* AccountModel.swift in Sources */,
+				C539FF9D283ED39300EEBE19 /* AuthenticationModel.swift in Sources */,
 				DE49BF372768D21100C71A55 /* AddAccountModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
