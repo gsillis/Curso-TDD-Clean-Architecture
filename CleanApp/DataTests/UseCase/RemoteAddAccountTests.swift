@@ -33,6 +33,13 @@ class RemoteAddAccountTests: XCTestCase {
             httpPostClientSpy.completeWith(error: .noConnectivity)
         })
     }
+    
+    func test_add_should_complete_with_email_in_use_error_if_client_completes_with_forbidden() {
+        let (sut, httpPostClientSpy) = makeSut()
+        expect(sut, completeWith: .failure(.emailInUse), when: {
+            httpPostClientSpy.completeWith(error: .forbidden)
+        })
+    }
 
     func test_add_should_complete_with_account_if_client_completes_with_data() {
         let (sut, httpPostClientSpy) = makeSut()
