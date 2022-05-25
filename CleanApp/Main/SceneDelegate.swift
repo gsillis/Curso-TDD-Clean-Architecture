@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UI
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -15,7 +16,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        window?.rootViewController = SignUpComposer.makeViewController(addAccount: UseCaseFactory.makeRemoteAddAccount())
+        let signUpcontroller = SignUpComposer.makeViewController(addAccount: UseCaseFactory.makeRemoteAddAccount())
+        let nav = NavigationController(rootViewController: signUpcontroller)
+        window?.rootViewController = nav
         window?.makeKeyAndVisible()
     }
 

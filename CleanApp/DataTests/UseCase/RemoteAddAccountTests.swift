@@ -33,6 +33,13 @@ class RemoteAddAccountTests: XCTestCase {
             httpPostClientSpy.completeWith(error: .noConnectivity)
         })
     }
+    
+    func test_add_should_complete_with_email_in_use_error_if_client_completes_with_forbidden() {
+        let (sut, httpPostClientSpy) = makeSut()
+        expect(sut, completeWith: .failure(.emailInUse), when: {
+            httpPostClientSpy.completeWith(error: .forbidden)
+        })
+    }
 
     func test_add_should_complete_with_account_if_client_completes_with_data() {
         let (sut, httpPostClientSpy) = makeSut()
@@ -52,7 +59,7 @@ class RemoteAddAccountTests: XCTestCase {
     func test_add_should_not_complet_if_sut_has_been_deallocated() {
         let httpPostClientSpy = HttpClientSpy()
         var sut: RemoteAddAccount? = RemoteAddAccount(url: makeURL(), httpPostClient: httpPostClientSpy)
-        var result: Result<AccountModel, DomainError>?
+        var result: AddAccount.Result?
         sut?.add(addAccountModel: makeAddAccountModel()) { result = $0 }
         sut = nil
         httpPostClientSpy.completeWith(error: .noConnectivity)
@@ -75,7 +82,7 @@ extension RemoteAddAccountTests {
     }
 
     func expect(_ sut: RemoteAddAccount,
-                completeWith expectedResult: Result<AccountModel, DomainError>,
+                completeWith expectedResult: AddAccount.Result,
                 when action: () -> Void,
                 file: StaticString = #filePath,
                 line: UInt = #line) {

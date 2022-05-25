@@ -26,6 +26,7 @@ public final class SignUpViewController: UIViewController, Storyboarded {
     }
     
     private func configure() {
+        title = "4Devs"
         saveButton.layer.cornerRadius = 5
         saveButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
         hideKeyboardOnTap()
@@ -53,9 +54,12 @@ extension SignUpViewController: LoadingView {
 
 extension SignUpViewController: AlertView {
     public func showMessage(viewModel: AlertViewModel) {
-        let alert = UIAlertController(title: viewModel.title, message: viewModel.message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default))
-        present(alert, animated: true)
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            let alert = UIAlertController(title: viewModel.title, message: viewModel.message, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default))
+            self.present(alert, animated: true)
+        }
     }
 }
 
