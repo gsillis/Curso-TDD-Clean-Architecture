@@ -22,3 +22,7 @@ func makeAddAccountModel() -> AddAccountModel {
         passwordConfirmation: "any_password"
     )
 }
+
+func makeAuthenticationModel() -> AuthenticationModel {
+    return AuthenticationModel(email: "mail@mail.com", password: "any_password")
+}

@@ -36,6 +36,8 @@
 		C539FF99283EC10E00EEBE19 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C539FF98283EC10E00EEBE19 /* SignUp.storyboard */; };
 		C539FF9B283ED35100EEBE19 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539FF9A283ED35100EEBE19 /* Authentication.swift */; };
 		C539FF9D283ED39300EEBE19 /* AuthenticationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539FF9C283ED39300EEBE19 /* AuthenticationModel.swift */; };
+		C539FF9F283ED51C00EEBE19 /* RemoteAuthenticationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539FF9E283ED51C00EEBE19 /* RemoteAuthenticationTests.swift */; };
+		C539FFA1283ED6A700EEBE19 /* RemoteAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C539FFA0283ED6A700EEBE19 /* RemoteAuthentication.swift */; };
 		C54849B927F1D5E7006DADBB /* Tests+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E2DD0278F4FB600D6C454 /* Tests+Extensions.swift */; };
 		C54849BA27F1D5E8006DADBB /* Tests+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E2DD0278F4FB600D6C454 /* Tests+Extensions.swift */; };
 		C54849BC27F1D7C8006DADBB /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54849BB27F1D7C8006DADBB /* LoadingView.swift */; };
@@ -368,6 +370,8 @@
 		C539FF98283EC10E00EEBE19 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		C539FF9A283ED35100EEBE19 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		C539FF9C283ED39300EEBE19 /* AuthenticationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationModel.swift; sourceTree = "<group>"; };
+		C539FF9E283ED51C00EEBE19 /* RemoteAuthenticationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAuthenticationTests.swift; sourceTree = "<group>"; };
+		C539FFA0283ED6A700EEBE19 /* RemoteAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAuthentication.swift; sourceTree = "<group>"; };
 		C54849BB27F1D7C8006DADBB /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		C549A14227C13F8E00D62179 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		C549A14627C141B700D62179 /* URLProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLProtocolStub.swift; sourceTree = "<group>"; };
@@ -1040,6 +1044,7 @@
 			isa = PBXGroup;
 			children = (
 				DE569E37276B90E0005F08E1 /* RemoteAddAccount.swift */,
+				C539FFA0283ED6A700EEBE19 /* RemoteAuthentication.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1048,6 +1053,7 @@
 			isa = PBXGroup;
 			children = (
 				DE49BF492768D2ED00C71A55 /* RemoteAddAccountTests.swift */,
+				C539FF9E283ED51C00EEBE19 /* RemoteAuthenticationTests.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1741,6 +1747,7 @@
 				DE569E3A276B911D005F08E1 /* HttpPostClientProtocol.swift in Sources */,
 				DE3A4453277E4177003932CE /* Data+Extensions.swift in Sources */,
 				DE3A4451277E2F19003932CE /* HttpError.swift in Sources */,
+				C539FFA1283ED6A700EEBE19 /* RemoteAuthentication.swift in Sources */,
 				DE569E38276B90E0005F08E1 /* RemoteAddAccount.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1754,6 +1761,7 @@
 				DE49BF4A2768D2ED00C71A55 /* RemoteAddAccountTests.swift in Sources */,
 				DECFB1D62790D6B500A6BB24 /* AccountModelFactory.swift in Sources */,
 				DE1E2DD1278F4FB600D6C454 /* Tests+Extensions.swift in Sources */,
+				C539FF9F283ED51C00EEBE19 /* RemoteAuthenticationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
