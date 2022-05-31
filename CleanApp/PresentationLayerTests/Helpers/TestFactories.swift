@@ -27,3 +27,11 @@ func makeAlertViewModel(message: String) -> AlertViewModel {
 func makeSuccessAlertViewModel(message: String) -> AlertViewModel {
     return AlertViewModel(title: "Tudo certo", message: message)
 }
+
+func makeLoginViewModel(email: String? = "any_email",
+                        password: String? = "any_password") -> LoginViewModel {
+    return LoginViewModel(
+        email: email,
+        password: password
+    )
+}
