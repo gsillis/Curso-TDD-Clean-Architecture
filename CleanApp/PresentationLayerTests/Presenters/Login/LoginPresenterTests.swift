@@ -54,15 +54,72 @@ class LoginPresenterTests: XCTestCase {
         authenticationSpy.completeWithError(.unexpectedError)
         wait(for: [exp], timeout: 1)
     }
+    
+    func test_login_should_shows_expired_session_if_authentication_completes_with_expired_session() {
+        let alertViewSpy = AlertViewSpy()
+        let authenticationSpy = AuthenticationSpy()
+        let sut = makeSut(alertView: alertViewSpy, authentication: authenticationSpy)
+        let exp = expectation(description: "waiting")
+        
+        alertViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, makeAlertViewModel(message: "Email e/ou senha inválido(s)"))
+            exp.fulfill()
+        }
+        
+        sut.login(viewModel: makeLoginViewModel())
+        authenticationSpy.completeWithError(.sessionExpired)
+        wait(for: [exp], timeout: 1)
+    }
+    
+    func test_login_should_shows_success_message_if_authentication_succeeds() {
+        let alertViewSpy = AlertViewSpy()
+        let authenticationSpy = AuthenticationSpy()
+        let sut = makeSut(alertView: alertViewSpy, authentication: authenticationSpy)
+        let exp = expectation(description: "waiting")
+        
+        alertViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, makeSuccessAlertViewModel(message: "Login realizado com sucesso"))
+            exp.fulfill()
+        }
+        
+        sut.login(viewModel: makeLoginViewModel())
+        authenticationSpy.completeWithAccount(makeAccountModel())
+        wait(for: [exp], timeout: 1)
+    }
+    
+    func test_login_should_shows_loading_before_and_after_authentication() {
+        let loadingViewSpy = LoadingViewSpy()
+        let authenticationSpy = AuthenticationSpy()
+        let sut = makeSut(authentication: authenticationSpy, loadingView: loadingViewSpy)
+        let exp = expectation(description: "waiting")
+
+        loadingViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, LoadingViewModel(isLoading: true))
+            exp.fulfill()
+        }
+        
+        sut.login(viewModel: makeLoginViewModel())
+        wait(for: [exp], timeout: 1)
+        
+        let expTwo = expectation(description: "waiting")
+        
+        loadingViewSpy.observer { viewModel in
+            XCTAssertEqual(viewModel, LoadingViewModel(isLoading: false))
+            expTwo.fulfill()
+        }
+        authenticationSpy.completeWithError(.unexpectedError)
+        wait(for: [expTwo], timeout: 1)
+    }
 }
 
 extension LoginPresenterTests {
     func makeSut(validation: Validation = ValidationSpy(),
                  alertView: AlertView = AlertViewSpy(),
                  authentication: Authentication = AuthenticationSpy(),
+                 loadingView: LoadingView = LoadingViewSpy(),
                  file: StaticString = #file,
                  line: UInt = #line) -> LoginPresenter {
-        let sut = LoginPresenter(validation: validation, alertView: alertView, authentication: authentication)
+        let sut = LoginPresenter(validation: validation, alertView: alertView, authentication: authentication, loadingView: loadingView)
         checkMemoryLeak(for: sut, file: file, line: line)
         return sut
     }
