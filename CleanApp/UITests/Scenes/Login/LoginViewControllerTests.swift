@@ -10,7 +10,7 @@ import UIKit
 import PresentationLayer
 @testable import UI
 
-class SignUpViewControllerTests: XCTestCase {
+class LoginViewControllerTests: XCTestCase {
     
     func test_loading_is_hidden_on_start_vc() {
         let sut = makeSut()
@@ -27,27 +27,23 @@ class SignUpViewControllerTests: XCTestCase {
         XCTAssertNotNil(sut as AlertView)
     }
     
-    func test_saveButton_calls_signUp_on_tap() {
-        var signViewModel: SignUpViewModel?
-        let sut = makeSut(signUpSpy: {signViewModel = $0})
-        let name = sut.nameTextfield?.text
+    func test_loginButton_calls_login_on_tap() {
+        var loginViewModel: LoginViewModel?
+        let sut = makeSut(loginSpy: {loginViewModel = $0})
         let email = sut.emailTextfield?.text
         let password = sut.passwordTextfield?.text
-        let passwordConfirmation = sut.passwordConfirmationTextfield?.text
-        sut.saveButton?.simulateTap()
-        XCTAssertEqual(signViewModel, SignUpViewModel(
-            name: name,
+        sut.loginButton?.simulateTap()
+        XCTAssertEqual(loginViewModel, LoginViewModel(
             email: email,
-            password: password,
-            passwordConfirmation: passwordConfirmation
+            password: password
         ))
     }
 }
 
-extension SignUpViewControllerTests {
-    func makeSut(signUpSpy: ((SignUpViewModel) -> Void)? = nil) -> SignUpViewController{
-        let sut = SignUpViewController.instantiate()
-        sut.signUp = signUpSpy
+extension LoginViewControllerTests {
+    func makeSut(loginSpy: ((LoginViewModel) -> Void)? = nil) -> LoginViewController{
+        let sut = LoginViewController.instantiate()
+        sut.login = loginSpy
         sut.loadViewIfNeeded()
         checkMemoryLeak(for: sut)
         return sut
