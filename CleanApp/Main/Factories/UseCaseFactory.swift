@@ -23,4 +23,9 @@ final class UseCaseFactory {
         let addAccount = RemoteAddAccount(url: makeURL(path: "signup"), httpPostClient: httpClient)
         return MainQueueDispatchDecorator(addAccount)
     }
+    
+    static func makeRemoteAuthentication() -> Authentication {
+        let authentication = RemoteAuthentication(url: makeURL(path: "signup"), httpPostClient: httpClient)
+        return MainQueueDispatchDecorator(authentication)
+    }
 }

@@ -15,7 +15,6 @@
 		C5267068282484B2004DA5EA /* ValidationCompositeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5267067282484B2004DA5EA /* ValidationCompositeTests.swift */; };
 		C526706A28248D0A004DA5EA /* ValidationComposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526706928248D0A004DA5EA /* ValidationComposite.swift */; };
 		C526706C28248D54004DA5EA /* ValidationSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526706B28248D54004DA5EA /* ValidationSpy.swift */; };
-		C5275C44283019E7003A022C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C5275C43283019E7003A022C /* Alamofire */; };
 		C5275C4528326ECF003A022C /* ValidationSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C526706B28248D54004DA5EA /* ValidationSpy.swift */; };
 		C5275C4628326F1D003A022C /* EmailValidatorSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AB7A5B27F47D89009EF521 /* EmailValidatorSpy.swift */; };
 		C52A2BAB27FF3A4C00FE9E6A /* UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C52A2BA327FF3A4B00FE9E6A /* UI.framework */; };
@@ -47,6 +46,9 @@
 		C54A98222847F2BF001DA6C3 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54A98212847F2BF001DA6C3 /* LoginViewController.swift */; };
 		C54A98252847F33B001DA6C3 /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54A98242847F33B001DA6C3 /* LoginViewControllerTests.swift */; };
 		C54A98262847FFF6001DA6C3 /* Tests+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1E2DD0278F4FB600D6C454 /* Tests+Extensions.swift */; };
+		C54A982928480D33001DA6C3 /* LoginComposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54A982828480D33001DA6C3 /* LoginComposerTests.swift */; };
+		C54A982B28480DDA001DA6C3 /* LoginComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54A982A28480DDA001DA6C3 /* LoginComposer.swift */; };
+		C54A982C28480E94001DA6C3 /* AuthenticationSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C558C1112846C67E00F6B430 /* AuthenticationSpy.swift */; };
 		C54B647427B46ADE00CAB250 /* Infra.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C54B646C27B46ADE00CAB250 /* Infra.framework */; };
 		C54B647927B46ADE00CAB250 /* AlamofireAdapterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54B647827B46ADE00CAB250 /* AlamofireAdapterTest.swift */; };
 		C54B648127B46C0F00CAB250 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE49BF3D2768D2EC00C71A55 /* Data.framework */; };
@@ -104,6 +106,7 @@
 		C5BF2CD628063A480040AE40 /* WeakVarProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BF2CD528063A480040AE40 /* WeakVarProxy.swift */; };
 		C5D6A6A227EA99600081C9AF /* AccountModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECFB1D52790D6B500A6BB24 /* AccountModelFactory.swift */; };
 		C5D6A6A327EA99F70081C9AF /* AccountModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECFB1D52790D6B500A6BB24 /* AccountModelFactory.swift */; };
+		C5DE0CF628481407001984F0 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C5DE0CF528481407001984F0 /* Alamofire */; };
 		C5DF6E95280C4342004BE840 /* TestFactories.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5AB7A6427F47EF6009EF521 /* TestFactories.swift */; };
 		C5DF6E98280C4ED5004BE840 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DF6E97280C4ED5004BE840 /* MainQueueDispatchDecorator.swift */; };
 		C5E6EF0A2846958D00CE06DA /* LoginPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5E6EF092846958D00CE06DA /* LoginPresenterTests.swift */; };
@@ -386,6 +389,8 @@
 		C54A981F2847F215001DA6C3 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		C54A98212847F2BF001DA6C3 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		C54A98242847F33B001DA6C3 /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
+		C54A982828480D33001DA6C3 /* LoginComposerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginComposerTests.swift; sourceTree = "<group>"; };
+		C54A982A28480DDA001DA6C3 /* LoginComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginComposer.swift; sourceTree = "<group>"; };
 		C54B646C27B46ADE00CAB250 /* Infra.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Infra.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54B647327B46ADE00CAB250 /* InfraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InfraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C54B647827B46ADE00CAB250 /* AlamofireAdapterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapterTest.swift; sourceTree = "<group>"; };
@@ -405,6 +410,7 @@
 		C5727EFD280F61BC008E76B7 /* ValidationSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationSpy.swift; sourceTree = "<group>"; };
 		C584352927C43EC4008585B4 /* UseCasesIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UseCasesIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C584352B27C43EC4008585B4 /* AddAccountIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountIntegrationTests.swift; sourceTree = "<group>"; };
+		C589DA9C2848FFBB00E85845 /* Main.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Main.entitlements; sourceTree = "<group>"; };
 		C5908DD027D7740F00DA2BED /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		C5908DD227D774AF00DA2BED /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
 		C5908DDB27D7871B00DA2BED /* EmailValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidator.swift; sourceTree = "<group>"; };
@@ -544,7 +550,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C5275C44283019E7003A022C /* Alamofire in Frameworks */,
+				C5DE0CF628481407001984F0 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,6 +755,7 @@
 		C56040F12804D142004E7AD2 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				C589DA9C2848FFBB00E85845 /* Main.entitlements */,
 				C5DF6E96280C4EC7004BE840 /* Decorators */,
 				C5AC8FEE2809FDBD003E31EC /* Environment */,
 				C5BF2CD728063A4D0040AE40 /* Proxies */,
@@ -766,6 +773,7 @@
 			isa = PBXGroup;
 			children = (
 				C5BF2CD1280632950040AE40 /* SignUpComposerTests.swift */,
+				C54A982828480D33001DA6C3 /* LoginComposerTests.swift */,
 			);
 			path = MainTests;
 			sourceTree = "<group>";
@@ -774,6 +782,7 @@
 			isa = PBXGroup;
 			children = (
 				C5BF2CCF28062D960040AE40 /* SignUpComposer.swift */,
+				C54A982A28480DDA001DA6C3 /* LoginComposer.swift */,
 				C5BF2CCC28062BB80040AE40 /* UseCaseFactory.swift */,
 			);
 			path = Factories;
@@ -1408,7 +1417,7 @@
 			);
 			name = Domain;
 			packageProductDependencies = (
-				C5275C43283019E7003A022C /* Alamofire */,
+				C5DE0CF528481407001984F0 /* Alamofire */,
 			);
 			productName = Domain;
 			productReference = DE49BF2B2768CEDC00C71A55 /* Domain.framework */;
@@ -1524,7 +1533,7 @@
 			);
 			mainGroup = DE49BF122767D62900C71A55;
 			packageReferences = (
-				C5275C42283019E7003A022C /* XCRemoteSwiftPackageReference "Alamofire" */,
+				C5DE0CF428481407001984F0 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = DE49BF1D2767D62900C71A55 /* Products */;
 			projectDirPath = "";
@@ -1771,6 +1780,7 @@
 				C56040F52804D142004E7AD2 /* SceneDelegate.swift in Sources */,
 				C5BF2CD628063A480040AE40 /* WeakVarProxy.swift in Sources */,
 				C5BF2CD028062D960040AE40 /* SignUpComposer.swift in Sources */,
+				C54A982B28480DDA001DA6C3 /* LoginComposer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1784,6 +1794,8 @@
 				C5DF6E95280C4342004BE840 /* TestFactories.swift in Sources */,
 				C5275C4628326F1D003A022C /* EmailValidatorSpy.swift in Sources */,
 				C5BF2CD4280633020040AE40 /* Tests+Extensions.swift in Sources */,
+				C54A982C28480E94001DA6C3 /* AuthenticationSpy.swift in Sources */,
+				C54A982928480D33001DA6C3 /* LoginComposerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2379,6 +2391,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Main/Main.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = WKN62NB674;
@@ -2397,6 +2411,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = pesssoal.Main;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2409,9 +2424,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Main/MainRelease.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = WKN62NB674;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Main/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -2427,6 +2444,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = pesssoal.Main;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -2965,20 +2983,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C5275C42283019E7003A022C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		C5DE0CF428481407001984F0 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C5275C43283019E7003A022C /* Alamofire */ = {
+		C5DE0CF528481407001984F0 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C5275C42283019E7003A022C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = C5DE0CF428481407001984F0 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */

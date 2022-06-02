@@ -16,7 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let signUpcontroller = SignUpComposer.makeViewController(addAccount: UseCaseFactory.makeRemoteAddAccount())
+        let signUpcontroller = LoginComposer.makeLoginViewController(authentication: UseCaseFactory.makeRemoteAuthentication())
         let nav = NavigationController(rootViewController: signUpcontroller)
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
