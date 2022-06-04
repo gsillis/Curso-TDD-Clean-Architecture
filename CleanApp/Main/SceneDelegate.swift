@@ -11,13 +11,23 @@ import UI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
-
+    private let loginController: () -> LoginViewController = {
+        return LoginComposer.makeLoginViewController(authentication: UseCaseFactory.makeRemoteAuthentication())
+    }
+    
+    private let signUpController: () -> SignUpViewController = {
+        return SignUpComposer.makeViewController(addAccount: UseCaseFactory.makeRemoteAddAccount())
+    }
+ 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
-        let signUpcontroller = LoginComposer.makeLoginViewController(authentication: UseCaseFactory.makeRemoteAuthentication())
-        let nav = NavigationController(rootViewController: signUpcontroller)
+        let nav = NavigationController()
+        let welcome = WelcomeViewController.instantiate()
+        let welcomeRouter = WelcomeRouter(nav: nav, loginFactory: loginController, signUpFactory: signUpController)
+        welcome.signUp = welcomeRouter.goToSignUp
+        welcome.login = welcomeRouter.goToLogin
+        nav.setRootViewControllers(welcome)
         window?.rootViewController = nav
         window?.makeKeyAndVisible()
     }
